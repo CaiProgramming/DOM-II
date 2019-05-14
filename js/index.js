@@ -101,3 +101,15 @@ email.addEventListener(
   },
   true
 );
+name.addEventListener("change", event => {
+  console.log(event.target);
+  event.target.style.backgroundColor =
+    event.target.value.length >= 5 ? "green" : "red";
+});
+
+banner.addEventListener("dragstart", event => {
+  alert("LET ME GOOOO");
+});
+banner.addEventListener("dragend", event => {
+  alert("thank you");
+});
