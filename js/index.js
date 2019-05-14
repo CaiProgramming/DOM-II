@@ -3,7 +3,7 @@ let trigger = document.querySelector(".btn");
 let closeButton = document.querySelector(".close-button");
 let nav = document.querySelector(".nav");
 let banner = document.querySelector("body > div > header > img");
-
+let logo = document.querySelector("body > header > div > h1");
 function windowOnClick(event) {
   if (event.target === modal) {
     toggleModal();
@@ -69,7 +69,7 @@ modal.children[0].appendChild(sButton);
 /////////////////////////////////////////////
 /////////////////////////////////////////////\
 email.addEventListener("keydown", event => {
-  email.style.color = email.style.color === "black" ? "pink" : "black";
+  email.style.color = email.style.color === "white" ? "pink" : "white";
 });
 sButton.addEventListener("mouseover", event => {
   sButton.style.backgroundColor = "grey";
@@ -88,3 +88,16 @@ banner.addEventListener("dblclick", event => {
   banner.className = "modal-content";
   banner.style.width = "90%";
 });
+//////////////////////////////////////////////
+email.addEventListener("focus", event => {
+  event.target.style.backgroundColor = "black";
+  event.target.style.color = "white";
+});
+email.addEventListener(
+  "blur",
+  event => {
+    event.target.style.backgroundColor =
+      event.target.value.length >= 5 ? "green" : "red";
+  },
+  true
+);
