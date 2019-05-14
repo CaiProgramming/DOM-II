@@ -1,16 +1,36 @@
-var modal = document.querySelector(".modal");
-var trigger = document.querySelector(".btn");
-var closeButton = document.querySelector(".close-button");
-
-function toggleModal() {
-  modal.classList.toggle("show-modal");
-}
+let modal = document.querySelector(".modal");
+let trigger = document.querySelector(".btn");
+let closeButton = document.querySelector(".close-button");
+let nav = document.querySelector(".nav");
+let banner = document.querySelector("body > div > header > img");
 
 function windowOnClick(event) {
   if (event.target === modal) {
     toggleModal();
     toggleFIModal();
   }
+}
+function navClick(event) {
+  event.preventDefault();
+  return false;
+}
+function toggleModal() {
+  modal.classList.toggle("show-modal");
+  email.value = "";
+  name.value = "";
+}
+function toggleBanner() {
+  if (event.target === wrapper) {
+    wrapper.classList.toggle("show-modal");
+    wrapper.className = "";
+    banner.className = "";
+    banner.style.width = "100%";
+  }
+}
+
+console.log(nav.children);
+for (i = 0; i < nav.children.length; i++) {
+  nav.children[i].addEventListener("click", navClick);
 }
 /////////////////////////////////////////////
 /////////////// Creation ////////////////////
@@ -20,7 +40,10 @@ function windowOnClick(event) {
 trigger.addEventListener("click", toggleModal);
 closeButton.addEventListener("click", toggleModal);
 window.addEventListener("click", windowOnClick);
+window.addEventListener("click", toggleBanner);
 
+let wrapper = document.createElement("div");
+banner.parentNode.insertBefore(wrapper, banner);
 let sButton = document.createElement("button");
 sButton.className = "button-modal";
 sButton.innerHTML = "Submit";
@@ -44,7 +67,10 @@ modal.children[0].appendChild(sButton);
 /////////////////////////////////////////////
 /////////////// Functions ///////////////////
 /////////////////////////////////////////////
-/////////////////////////////////////////////
+/////////////////////////////////////////////\
+email.addEventListener("keydown", event => {
+  email.style.color = email.style.color === "black" ? "pink" : "black";
+});
 sButton.addEventListener("mouseover", event => {
   sButton.style.backgroundColor = "grey";
   sButton.style.color = "white";
@@ -54,3 +80,11 @@ sButton.addEventListener("mouseout", event => {
   sButton.style.color = "black";
 });
 sButton.addEventListener("click", toggleModal);
+//////////////////////////////////////////////
+banner.addEventListener("dblclick", event => {
+  wrapper.className = "modal";
+  wrapper.appendChild(banner);
+  wrapper.classList.toggle("show-modal");
+  banner.className = "modal-content";
+  banner.style.width = "90%";
+});
