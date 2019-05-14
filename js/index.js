@@ -12,7 +12,7 @@ function windowOnClick(event) {
 }
 function navClick(event) {
   event.preventDefault();
-  return false;
+  event.stopPropagation();
 }
 function toggleModal() {
   modal.classList.toggle("show-modal");
@@ -109,7 +109,9 @@ name.addEventListener("change", event => {
 
 banner.addEventListener("dragstart", event => {
   alert("LET ME GOOOO");
+  event.stopPropagation();
 });
 banner.addEventListener("dragend", event => {
   alert("thank you");
+  event.stopPropagation();
 });
